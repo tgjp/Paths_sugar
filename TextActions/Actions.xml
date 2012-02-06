@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<action-recipes>
+		
+	<action id="jp.tregra.sugars.paths.convert-path-to-htmltag" category="actions.paths">
+		<class>TEALoader</class>
+		<key-equivalent>control shift p</key-equivalent>
+		<setup>
+			<script>convert_path.rb</script>
+			<input>selection</input>
+			<alternate>line</alternate>
+			<output>text</output>
+			<undo_name>Convert Path</undo_name>
+		</setup>
+	</action>
+	
+</action-recipes>

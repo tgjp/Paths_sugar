@@ -1,0 +1,13 @@
+Paths.sugar
+===========
+
+It's a text action sugar for Espresso.app, to convert file path to html tag.
+
+* /path/to/image/sample.jpg -> <img src="/path/to/image/sample.jpg" width="{pixelWidth by sips} heigth="{pixelHeight by sips}" alt="" />
+* /path/to/css/sample.css -> <link rel="stylesheet" type="text/css" href="/path/to/css/sample.css" />
+* /path/to/js/sample.js -> <script type="text/javascript" src="/path/to/js/sample.js" /></script>
+* /path/to/files/sample.(html|php|pdf) -> <a href="/path/to/files/sample.(html|php|pdf)"/></a>
+
+----
+
+

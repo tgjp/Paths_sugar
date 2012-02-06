@@ -20,7 +20,7 @@ end
 if (ENV['E_SUGARPATH'])
   config = YAML.load( File.open("#{ENV['E_SUGARPATH']}/Support/Config.yaml").read )
 else
-  config = YAML.load( File.open("/Users/tg/Library/Application Support/Espresso/Sugars/Paths.sugar/Support/Config.yaml").read )
+  config = YAML.load( File.open("/Users/tg/Dev_Sugar/Paths_sugar/Support/Config.yaml").read )
 end
 
 path = STDIN.read.strip
@@ -39,16 +39,13 @@ end
 
 re_protocol = /^(https?|ftps?)/i
 
-if path !~ re_protocol
-  rel_path = to_rel( base_dir, path );
-else
-  rel_path = path
-end
-
 replacements.each do |i|
   re = Regexp.new( i['regexp'], Regexp::IGNORECASE )
   
   if path =~ re
+  	file_path = $1
+  	file_ext = $2
+        
     if i['type'] == 'image'
       
       pixelWidth = ''
@@ -66,13 +63,25 @@ replacements.each do |i|
         end
       end
       
-      print i['pattern'].sub('{path}', rel_path ).sub('{pixelWidth}', pixelWidth).sub('{pixelHeight}', pixelHeight) 
+		  if path !~ re_protocol
+		    rel_path = to_rel( base_dir, file_path )
+		  else
+		    rel_path = path
+		  end
+		  
+      print i['pattern'].gsub('{path}', rel_path ).gsub('{ext}', file_ext).gsub('{pixelWidth}', pixelWidth).gsub('{pixelHeight}', pixelHeight) 
       exit
     end
     
     if i['type'] == 'file'
       
-      print i['pattern'].sub('{path}', rel_path )
+			if path !~ re_protocol
+			  rel_path = to_rel( base_dir, file_path )
+			else
+			  rel_path = path
+			end
+			
+      print i['pattern'].gsub('{path}', rel_path ).gsub('{ext}', file_ext)
       exit
     end
   end

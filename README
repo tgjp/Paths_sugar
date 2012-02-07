@@ -10,4 +10,15 @@ It's a text action sugar for Espresso.app, to convert file path to html tag.
 
 ----
 
+All patterns are defined at /Support/Config.yaml
+
+type definition
+- image: try to get pixelWidth/pixelHeight using sips command.
+- file: normal type
+
+replacement parts
+- {path}: file path including filename.
+- {ext}: file extension.
+- {pixelWidth}: pixel width got by sips command.
+- {pixelHeight}: pixel height got by sips command.
 

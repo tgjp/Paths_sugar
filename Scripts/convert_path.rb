@@ -2,7 +2,7 @@
 $KCODE = 'U'
 
 require 'yaml'
-require 'pp'
+require 'URI'
 
 def to_rel(base_dir, target)
   sep = /#{File::SEPARATOR}+/o
@@ -26,7 +26,7 @@ end
 path = STDIN.read.strip
 
 config['prosubs'].each do |i|
-  path = path.sub(i[0], i[1]);
+  path = path.sub(i[0], i[1])
 end
 
 replacements = config['replacements']
@@ -51,7 +51,7 @@ replacements.each do |i|
       pixelWidth = ''
       pixelHeight = ''
       if path !~ re_protocol
-        IO.popen('sips -g pixelWidth -g pixelHeight ' << path) do |io|
+        IO.popen('sips -g pixelWidth -g pixelHeight ' << path.gsub(/ /, "\\ ")) do |io|
           while io.gets
             if ($_ =~ /pixelWidth: ([0-9]+)$/)
               pixelWidth = $1

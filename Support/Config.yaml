@@ -6,5 +6,5 @@ prosubs:
 replacements:
  - { regexp: ^(.*)\.(jpg|jpeg|gif|png)$, pattern: '<img src="{path}.{ext}" width="{pixelWidth}" height="{pixelHeight}" alt="" />', type: image }
  - { regexp: ^(.*)\.(css)$, pattern: '<link rel="stylesheet" type="text/css" href="{path}.{ext}" />', type: file }
- - { regexp: ^(.*)\.(js)$, pattern: '<script src="{path}.{ext}" type="text/javascritp"></script>', type: file }
+ - { regexp: ^(.*)\.(js)$, pattern: '<script src="{path}.{ext}" type="text/javascript"></script>', type: file }
  - { regexp: ^(.*)\.(html?|php|pdf)$, pattern: '<a href="{path}.{ext}"></a>', type: file }
